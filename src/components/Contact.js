@@ -4,16 +4,14 @@ class Contact extends LitElement {
     render() {
         return html`
             <style>
-                .nav{
-                    display:flex;
-                    padding:15px 10px;
-                }
-                a{
-                    padding:7px;
+                h4 {
+                    margin:0
                 }
             </style>
             <div class="contact">
-               <h1>this is the contact component</h1>
+               <h4>this is the contact component</h4>
+               <br/>
+               adn another thing.
             </div>
         `;
     } 

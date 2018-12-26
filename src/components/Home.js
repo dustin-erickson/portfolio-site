@@ -4,16 +4,12 @@ class Home extends LitElement {
     render() {
         return html`
             <style>
-                .nav{
-                    display:flex;
-                    padding:15px 10px;
-                }
-                a{
-                    padding:7px;
+                h4 {
+                    margin:0
                 }
             </style>
             <div class="home">
-               <h1>this is the home component</h1>
+               <h4>this is the home component</h4>
             </div>
         `;
     } 
