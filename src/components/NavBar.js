@@ -7,13 +7,16 @@ class NavBar extends LitElement {
             <slot></slot>
         </nav>
         <style>
+           @import url('https://fonts.googleapis.com/css?family=Press+Start+2P|Roboto+Mono');
+            :host {
+                font-family: 'Roboto Mono','Press Start 2P', monospace;
+            }
             nav {
                 display:flex;
                 padding:1px;
                 border:solid 1px rgba(245,245,245, .5);
             }
-            nav ::slotted(.nav-link) {
-                font-family:helvetica;
+            nav ::slotted(.nav-link) {  
                 text-align:center;
                 padding:5px 0px;
                 border:solid 1.2px silver;

@@ -4,7 +4,7 @@
   "description": "personal presentation website",
   "main": "app.js",
   "scripts": {
-    "serve": "webpack-dev-server --entry ./src/app.js --output-filename ./dist/bundle.js",
+    "serve": "webpack-dev-server --mode development --entry ./src/app.js --output-filename ./dist/bundle.js",
     "build": "webpack --entry ./src/app.js --output-filename ./dist/bundle.js",
     "build:prod": "webpack --entry ./src/app.js --output-filename ./dist/bundle.js -p",
     "postinstall": "empathy install --only @polymer/lit-element"
