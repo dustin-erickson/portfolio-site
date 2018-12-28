@@ -11,7 +11,7 @@ class Home extends LitElement {
             <div class="home">
                 <h4>this is the home component</h4>
                 <div style="text-align:center;">
-                    <new-button dark nofill @click="${this.handleContactClick}">
+                    <new-button @click="${this.handleContactClick}">
                         <span class="icon">&#9743;</span>
                         Contact
                     </new-button>

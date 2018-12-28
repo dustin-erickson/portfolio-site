@@ -1,28 +1,37 @@
 import {LitElement, html} from '../../assets/@polymer/lit-element';
 
 class NavBar extends LitElement {
+    static get properties() {
+        return {
+            dark:{type:Boolean}
+        }
+    }
+    constructor() {
+        super();
+        this.dark = false;
+    }
     render() {
         return html`
-        <nav>
+        <nav .dark=${this.dark}>
             <slot></slot>
         </nav>
         <style>
            @import url('https://fonts.googleapis.com/css?family=Press+Start+2P|Roboto+Mono');
             :host {
-                font-family: 'Roboto Mono','Press Start 2P', monospace;
+                font-family: Arial, Helvetica, sans-serif;
             }
             nav {
                 display:flex;
                 padding:1px;
-                border:solid 1px rgba(245,245,245, .5);
+                border:${ this.dark ? `solid 1px rgba(245,245,245, .5)` : `solid 1px rgba(128,128,128, .7)` };
             }
             nav ::slotted(.nav-link) {  
                 text-align:center;
                 padding:5px 0px;
-                border:solid 1.2px silver;
+                border:${ this.dark ? `solid 1.2px silver` : `solid 1.2px rgba(128,128,128, .7)` };
                 min-width:85px;
                 text-decoration:none;
-                color:whitesmoke;
+                color:${this.dark ? `whitesmoke` : `#585858`};
                 opacity: 0.4;
                 transition: 0.2s;
             }

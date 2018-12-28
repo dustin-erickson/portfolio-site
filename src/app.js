@@ -8,10 +8,19 @@ import './components/Music.js';
 
 
 class App extends LitElement {
+    static get properties() {
+        return {
+            dark:{type:Boolean}
+        }
+    }
+    constructor() {
+        super();
+        this.dark = false;
+    }
     render(){
         return html`
             <div id="app">
-                <nav-bar>
+                <nav-bar .dark=${this.dark}>
                     <a active href="/" class="nav-link">Home</a>
                     <a href="/projects" class="nav-link">About</a>
                     <a href="/contact" class="nav-link right">Contact</a>
@@ -21,10 +30,12 @@ class App extends LitElement {
             <style>
                 #app {
                     background-color:inherit;
-                    height:100vh;
+                    height:98vh;
                 }
                 .content {
-                    border:solid 1px rgba(245,245,245, .5);
+                    border:${this.dark ? `solid 1px rgba(245,245,245, .5)`: `solid 1px rgba(128,128,128, .7)`};
+                    height:700px;
+                    overflow:auto;
                     border-top:none;
                 }
                 h4 {

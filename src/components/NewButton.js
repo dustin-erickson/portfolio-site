@@ -17,26 +17,39 @@ class NewButton extends LitElement {
     }
     render(){
         return html`
+        <!--HTML templete area -->
+
             <div class="btn">
                 <div class="btn-border">
                     <slot></slot>
                 </div>
             </div>
+
+        <!--end HTML templete area -->
+
+        <!--Styles Area -->
+
             <style>
+                :host {
+                    font-family: Georgia, 'Times New Roman', Times, serif;
+                }
                 :host .btn {
                     cursor:pointer;
                     display:inline-flex;
                     min-width:85px;
                     min-height:7px;
                     padding:4px 12px;
-                    color:${this.dark || this.primary ? `#DCDCDC` : `#333`};
-                    border:${this.noborder ? `none` : this.dark || this.primary ? `solid 1.2px silver` : `solid 1.2px #333`};
-                   background-color:${this.noFill ? 'inherit' : this.primary ? `rgba(6,95,212, .7)` : 'whitesmoke'};
-                   justify-content:center;
-                   text-align:center; 
+                    color:var(-button-color);
+                    color:${this.dark || this.primary ? `#DCDCDC` : `rgba(104,104,104, 1)`};
+                    border:${this.noborder ? `none` : this.dark || this.primary ? `solid 1.2px silver` : `solid 1.2px rgba(128,128,128, .6)`};
+                    justify-content:center;
+                    text-align:center; 
+                    background-color:${this.noFill ? 'inherit' : this.primary ? `rgba(6,95,212, .7)` : 'whitesmoke'};
+                    transition:0.3s;
                 }
                 :host .btn:active {
                     border:${this.noborder ? `none` : this.dark || this.primary ? `solid 1.4px silver` : `solid 1.4px #333`};
+                    box-shadow:${this.noborder ? `.1px .2px .2px #333` : this.dark || this.primary ? `.1px .2px 1px, .1px .2px 2px rgba(190,190,190, .2)` : `.1px .2px 1px, .1px .2px 2px rgba(190,190,190, .2)`};
                 }
                 :host ::slotted(.icon) {
                     font-size:110%;
@@ -44,7 +57,7 @@ class NewButton extends LitElement {
                     padding-right:3px;
                 }
                 :host .btn:hover {
-                    background-color:${this.noFill ? 'inherit' : this.primary ? `rgba(6,95,212, 1)` : 'whitesmoke'};
+                    background-color:${this.noFill ? 'rgba(133, 224, 133, .2)' : this.primary ? `rgba(6,95,212, 1)` : 'rgba(133, 224, 133, .2)'};
                     color:${this.dark || this.primary ? `whitesmoke` : `#333`};
                 }
                 .btn-border {
@@ -56,6 +69,7 @@ class NewButton extends LitElement {
                     padding:4px 10px;
                 }
             </style>
+        <!--end Styles Area -->
         `;
     }
 }
