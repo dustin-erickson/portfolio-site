@@ -26,6 +26,7 @@ class App extends LitElement {
                     <a href="/contact" class="nav-link right">Contact</a>
                 </nav-bar>
                 <div class="content"></div>
+                <quick-icons></quick-icons>
             </div>
             <style>
                 #app {
@@ -34,9 +35,10 @@ class App extends LitElement {
                 }
                 .content {
                     border:${this.dark ? `solid 1px rgba(245,245,245, .5)`: `solid 1px rgba(128,128,128, .7)`};
-                    height:700px;
+                    max-height:700px;
                     overflow:auto;
                     border-top:none;
+                    padding:10px 25px;
                 }
                 h4 {
                     margin:0;

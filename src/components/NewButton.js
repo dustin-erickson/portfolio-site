@@ -39,7 +39,6 @@ class NewButton extends LitElement {
                     min-width:85px;
                     min-height:7px;
                     padding:4px 12px;
-                    color:var(-button-color);
                     color:${this.dark || this.primary ? `#DCDCDC` : `rgba(104,104,104, 1)`};
                     border:${this.noborder ? `none` : this.dark || this.primary ? `solid 1.2px silver` : `solid 1.2px rgba(128,128,128, .6)`};
                     justify-content:center;
@@ -57,7 +56,7 @@ class NewButton extends LitElement {
                     padding-right:3px;
                 }
                 :host .btn:hover {
-                    background-color:${this.noFill ? 'rgba(133, 224, 133, .2)' : this.primary ? `rgba(6,95,212, 1)` : 'rgba(133, 224, 133, .2)'};
+                    background-color:${this.noFill ? 'rgba(245,245,245 .2)' : this.primary ? `rgba(6,95,212, 1)` : 'rgba(245, 245, 245, .2)'};
                     color:${this.dark || this.primary ? `whitesmoke` : `#333`};
                 }
                 .btn-border {
@@ -67,6 +66,24 @@ class NewButton extends LitElement {
                     width:100%;
                     height:100%;
                     padding:4px 10px;
+                }
+                @media screen and (min-width: 0px) {
+                    .btn {
+                        padding:1px 4px!important;   
+                        font-size:.8em!important; 
+                    }
+                }
+                @media screen and (min-width: 899px) {
+                    .btn {
+                        padding:3px 8px !important;
+                        font-size:.9em!important; 
+                    }
+                }
+                @media screen and (min-width: 1500px) {
+                    .btn {
+                        padding:4px 12px !important;
+                        font-size:1em!important;
+                    }
                 }
             </style>
         <!--end Styles Area -->
