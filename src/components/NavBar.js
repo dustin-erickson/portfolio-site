@@ -16,7 +16,6 @@ class NavBar extends LitElement {
             <slot></slot>
         </nav>
         <style>
-           @import url('https://fonts.googleapis.com/css?family=Press+Start+2P|Roboto+Mono');
             :host {
                 font-family: Arial, Helvetica, sans-serif;
             }
@@ -33,19 +32,7 @@ class NavBar extends LitElement {
                 text-decoration:none;
                 color:${this.dark ? `whitesmoke` : `#585858`};
                 opacity: 0.4;
-                transition: 0.2s;
-            }
-            nav ::slotted(a:first-child:not([active])) {
-             
-            }
-            nav ::slotted(a:last-child:not([active])) {
-              
-            }
-            nav ::slotted(a:last-child:not([active])) {
-          
-            }
-            nav ::slotted(a:last-child:not([active])) {
-             
+                transition: 0.3s;
             }
             nav ::slotted(a[active]) {
                 opacity: 1;
@@ -65,7 +52,28 @@ class NavBar extends LitElement {
             nav ::slotted(.center) {
                 margin-right:auto;
                 margin-left:auto;
-            }   
+            }
+            @media screen and (min-width: 0px) {
+                    #app {
+                        width:100%;
+                        margin:auto;
+                        transition: width .7s;
+                    }
+                }
+                @media screen and (min-width: 899px) {
+                    nav ::slotted(.nav-link)  {
+                        padding:7px 2px;
+                        font-size:1.1em;
+                        transition: padding .7s, font-size .3s;
+                    }
+                }
+                @media screen and (min-width: 1500px) {
+                    nav ::slotted(.nav-link) {
+                        padding:10px 5px;
+                        font-size:1.2em;
+                        transition: padding .7s;
+                    }
+                }   
         </style>
         `;
     } 

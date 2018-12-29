@@ -49,7 +49,7 @@ class NewButton extends LitElement {
                 }
                 :host .btn:active {
                     border:${this.noborder ? `none` : this.dark || this.primary ? `solid 1.4px silver` : `solid 1.4px #333`};
-                    box-shadow:${this.noborder ? `.1px .2px .2px #333` : this.dark || this.primary ? `.1px .2px 1px, .1px .2px 2px rgba(190,190,190, .2)` : `.1px .2px 1px, .1px .2px 2px rgba(190,190,190, .2)`};
+                    box-shadow:${this.noborder ? `.1px .2px .2px #333` : this.dark || this.primary ? `-.1px -.2px 1px, -.3px -.3px 1px rgba(190,190,190, .2)` : `-.3px -.3px 1px, -.4px -.3px 1px rgba(190,190,190, .2)`};
                 }
                 :host ::slotted(.icon) {
                     font-size:110%;

@@ -71,7 +71,7 @@ class App extends LitElement {
         const contentDiv = this.shadowRoot.querySelector('.content');
         const router = new Router(contentDiv /*{baseUrl:'/dummyBaseUrl/'}*/)
         router.setRoutes([
-            {path:"/",component:'home-view'},
+            {path:"/",component:`home-view`},
             {path:'/projects',component:'projects-view'},
             {path:'/music',component:'music-view'},
             {path:'/contact',component:'contact-view'}
