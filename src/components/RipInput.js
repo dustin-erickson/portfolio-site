@@ -158,7 +158,7 @@ class RipInput extends LitElement {
         inputBox.addEventListener("click", boxFocusInput);
     }
     disconnectedCallback() {
-        this.shadowRoot.querySelector(".input-box").removeEventListener('focus', onInputFocus);
+        this.shadowRoot.querySelector(".input-box").cloneNode(true);
         this.shadowRoot.querySelector("input").cloneNode(true);
     }
     
