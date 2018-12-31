@@ -36,14 +36,14 @@ class NewButton extends LitElement {
                 :host .btn {
                     cursor:pointer;
                     display:inline-flex;
-                    min-width:85px;
-                    min-height:7px;
+                    min-width:100px;
+                    min-height:20px;
                     padding:4px 12px;
                     color:${this.dark || this.primary ? `#DCDCDC` : `rgba(104,104,104, 1)`};
                     border:${this.noborder ? `none` : this.dark || this.primary ? `solid 1.2px silver` : `solid 1.2px rgba(128,128,128, .6)`};
                     justify-content:center;
                     text-align:center; 
-                    background-color:${this.noFill ? 'inherit' : this.primary ? `rgba(6,95,212, .7)` : 'whitesmoke'};
+                    background-color:${this.noFill ? 'inherit' : this.primary ? `rgba(6,95,212, .7)` : 'rgba(245, 245, 245, .2)'};
                     transition:0.3s;
                 }
                 :host .btn:active {
@@ -56,32 +56,35 @@ class NewButton extends LitElement {
                     padding-right:3px;
                 }
                 :host .btn:hover {
-                    background-color:${this.noFill ? 'rgba(245,245,245 .2)' : this.primary ? `rgba(6,95,212, 1)` : 'rgba(245, 245, 245, .2)'};
+                    background-color:${this.noFill ? 'rgba(245,245,245 .4)' : this.primary ? `rgba(6,95,212, 1)` : 'rgba(245, 245, 245, .4)'};
                     color:${this.dark || this.primary ? `whitesmoke` : `#333`};
                 }
+                :host[dark] {
+                    background-color:${this.noFill ? 'rgba(245,245,245 .2)' : this.primary ? `rgba(6,95,212, 1)` : 'rgba(245, 245, 245, .2)'};
+                }
                 .btn-border {
-                    box-sizing: border-box;
-                    -moz-box-sizing: border-box;
-                    -webkit-box-sizing: border-box;
                     width:100%;
                     height:100%;
                     padding:4px 10px;
                 }
                 @media screen and (min-width: 0px) {
                     .btn {
-                        padding:1px 4px!important;   
+                        padding:1px 4px!important;
+                        border-radius:3px;   
                         font-size:.8em!important; 
                     }
                 }
                 @media screen and (min-width: 899px) {
                     .btn {
                         padding:3px 8px !important;
+                        border-radius:4px;
                         font-size:.9em!important; 
                     }
                 }
                 @media screen and (min-width: 1500px) {
                     .btn {
                         padding:4px 12px !important;
+                        border-radius:5px;
                         font-size:1em!important;
                     }
                 }

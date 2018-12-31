@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "@polymer/lit-element": "^0.6.5",
-    "@vaadin/router": "^1.2.0"
+    "lit-redux-router": "^0.4.0",
+    "pwa-helpers": "^0.9.0",
+    "redux": "^4.0.1"
   }
 }

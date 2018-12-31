@@ -3,12 +3,14 @@ import {LitElement, html} from '../../assets/@polymer/lit-element';
 class NavBar extends LitElement {
     static get properties() {
         return {
-            dark:{type:Boolean}
+            dark:{type:Boolean},
+            noborder:{type:Boolean}
         }
     }
     constructor() {
         super();
         this.dark = false;
+        this.noborder = false;
     }
     render() {
         return html`
@@ -22,7 +24,7 @@ class NavBar extends LitElement {
             nav {
                 display:flex;
                 padding:1px;
-                border:${ this.dark ? `solid 1px rgba(245,245,245, .5)` : `solid 1px rgba(128,128,128, .7)` };
+                border:${this.noborder ? 'none' : this.dark ? `solid 1px rgba(245,245,245, .5)` : `solid 1px rgba(128,128,128, .7)` };
             }
             nav ::slotted(.nav-link) {  
                 text-align:center;
@@ -35,6 +37,7 @@ class NavBar extends LitElement {
                 transition: 0.3s;
             }
             nav ::slotted(a[active]) {
+                text-decoration:underline;
                 opacity: 1;
             }
             nav ::slotted(.nav-link:hover:not([active])) {
@@ -57,21 +60,21 @@ class NavBar extends LitElement {
                     #app {
                         width:100%;
                         margin:auto;
-                        transition: width .7s;
+                        transition: .3s;
                     }
                 }
                 @media screen and (min-width: 899px) {
                     nav ::slotted(.nav-link)  {
                         padding:7px 2px;
                         font-size:1.1em;
-                        transition: padding .7s, font-size .3s;
+                        transition:  .3s;
                     }
                 }
                 @media screen and (min-width: 1500px) {
                     nav ::slotted(.nav-link) {
                         padding:10px 5px;
                         font-size:1.2em;
-                        transition: padding .7s;
+                        transition: .3s;
                     }
                 }   
         </style>

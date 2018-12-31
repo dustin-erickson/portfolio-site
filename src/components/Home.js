@@ -1,28 +1,34 @@
 import {LitElement, html} from '../../assets/@polymer/lit-element';
-import './NewButton.js';
+
 class Home extends LitElement {
+    static get properties(){
+        return {
+            dark:{type:Boolean}
+        }
+    }
     render() {
         return html`
             <style>
+                :host {
+                    color:${this.dark ? `#E8E8E8!important` : '#333'};
+                }
                 h4 {
-                    margin:0
+                    margin:0;
+                }
+                .home {
+                    display:flex;
+                    justify-content:center;
+                    flex-direction:column;
+                    flex-wrap:wrap;
                 }
             </style>
             <div class="home">
-                <h4>this is the home component</h4>
-                <div style="text-align:center;">
-                    <new-button @click="${this.handleContactClick}">
-                        <div>
-                            <span class="icon">&#9743;</span>
-                            Contact
-                        </div>
-                    </new-button>
-                </div>
+                <h4>Home Component</h4>
             </div>
         `;
     } 
-    handleContactClick(e) {
-        console.log("new Button clicked")
+    firstUpdated() {
+       
     }
 }
 
