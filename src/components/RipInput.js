@@ -26,13 +26,62 @@ class RipInput extends LitElement {
                 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
                 display:block;
             }
+            :host(.small) .input-box {    
+                    height:30px;
+            }
+            :host(.small) label {    
+                    top:-18px;
+                    font-size:12pt;
+            }
+            :host(.small) input {    
+                    top:8px;
+                    font-size:11pt;
+            }
+            :host(.large) .input-box {    
+                    height:54px;      
+            }
+            :host(.large) label {    
+                    top:-27px;
+                    font-size:19pt;
+            }
+            :host(.large) input {    
+                    top:18px;
+                    font-size:20pt;
+            }
+            .shrunkLabel {
+                top:-27px!important;
+                font-size:9pt!important;
+                color:${this.dark ? 'rgb(144,202,249)' : '#3949ab'}!important;
+            }
+            :host(.small) .shrunkLabel {    
+                font-size:8pt!important;
+            }
+            .hasvalue {
+                top:-27px!important;
+                font-size:9pt!important;
+            }
+            :host(.small) .hasvalue {    
+                font-size:8pt!important;
+            }
+            .highlighted {
+                background-color:${this.dark ? `rgba(189,189,189, .1)` : `rgba(189,189,189, .3)`}!important;
+                box-shadow:${this.dark ? 'inset 0px -2px 0px 0px rgb(144,202,249)':'inset 0px -2px 0px 0px #3949ab'}!important;
+            }
+            :host(.large) .shrunkLabel {    
+                top:-35px!important;
+                font-size:12pt!important;
+            }
+            :host(.large) .hasvalue {    
+                top:-35px!important;
+                font-size:12pt!important;
+            }
             label {
                 letter-spacing:1.2px;
                 user-select: none;
                 cursor:text;
                 position:relative;
-                top:-15px;
-                font-size:18pt;
+                top:-20px;
+                font-size:16pt;
                 color:${this.dark ? `rgba(250,250,250, .5)`:`#78909c`};
                 padding:0;
                 margin:0;
@@ -52,7 +101,7 @@ class RipInput extends LitElement {
             }
             .input-box {
                 cursor:text;
-                height:49px;
+                height:45px;
                 -webkit-box-shadow:inset 0px -1.3px 0px 0px #b0bec5;
                 -moz-box-shadow:inset 0px -1.3px 0px 0px #b0bec5;
                 box-shadow:inset 0px -1.3px 0px 0px #b0bec5;
@@ -66,7 +115,6 @@ class RipInput extends LitElement {
             }
             @media screen and (min-width: 0px) {
                 .input-box {
-                    height:40px;
                     margin:auto;
                     transition: height .7s;
                 }
@@ -79,7 +127,6 @@ class RipInput extends LitElement {
             }
             @media screen and (min-width: 899px) {
                 .input-box {
-                    height:45px;
                     margin:auto;
                     transition: height .4s;
                 }
@@ -94,7 +141,6 @@ class RipInput extends LitElement {
             }
             @media screen and (min-width: 1500px) {
                 .input-box {
-                    height:50px;
                     margin:auto;
                     transition: height .7s;
                 }
@@ -129,29 +175,28 @@ class RipInput extends LitElement {
         const input = this.shadowRoot.querySelector("input");
         const label = this.shadowRoot.querySelector('label');
         const onInputFocus = () => {
-            inputBox.style.backgroundColor = this.dark ? `rgba(189,189,189, .1)` : `rgba(189,189,189, .3)`;
-            inputBox.style.boxShadow =this.dark ? 'inset 0px -2px 0px 0px rgb(144,202,249)':'inset 0px -2px 0px 0px #3949ab';
-            label.style.top = '-24px';
-            label.style.fontSize = '9pt';
-            label.style.color = this.dark ? 'rgb(144,202,249)' : '#3949ab';
+            label.classList.add('shrunkLabel');
+            inputBox.classList.add('highlighted');
         };
         const onInputBlur = () => {
+            label.classList.remove('shrunkLabel');
+            inputBox.classList.remove('highlighted');
             if (!this.value.trim()) {
                 //no value ...remove styles for label
+                label.classList.remove('hasvalue');
                 label.style.top = '';
                 label.style.fontSize = '';
-            } 
+            } else {
+                label.classList.add('hasvalue');
+            }
             label.style.color = '';
-            inputBox.style.backgroundColor = '';
-            inputBox.style.boxShadow = '';
         };
         const boxFocusInput = () => {
             input.focus();
         };
         //set inital styles accomidate for value being pre set.
         if(this.value) {
-            label.style.top = '-24px';
-            label.style.fontSize = '9pt';
+            label.classList.add('hasvalue');
         }
         input.addEventListener('focus', onInputFocus);
         input.addEventListener('blur', onInputBlur);
