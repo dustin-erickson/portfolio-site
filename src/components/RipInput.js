@@ -24,7 +24,7 @@ class RipInput extends LitElement {
             <style>
             :host {
                 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                display:block;
+                width:100%;
             }
             :host(.small) .input-box {    
                     height:30px;
@@ -76,11 +76,10 @@ class RipInput extends LitElement {
                 font-size:12pt!important;
             }
             label {
-                letter-spacing:1.2px;
                 user-select: none;
                 cursor:text;
                 position:relative;
-                top:-20px;
+                top:-16px;
                 font-size:16pt;
                 color:${this.dark ? `rgba(250,250,250, .5)`:`#78909c`};
                 padding:0;
@@ -96,7 +95,7 @@ class RipInput extends LitElement {
                 width:100%;
                 font-size:14pt;
                 outline-width:0;
-                transition:font-size .3s, width .3s;
+                transition:font-size .3s, width .3s, top .3s;
                 margin-top:4px;
             }
             .input-box {

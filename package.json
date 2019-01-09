@@ -4,7 +4,7 @@
   "description": "personal presentation website",
   "main": "app.js",
   "scripts": {
-    "serve": "webpack-dev-server --mode development --entry ./src/app.js --output-filename ./dist/bundle.js",
+    "serve": "webpack-dev-server --mode development --entry ./src/app.js --output-filename ./dist/static/bundle.js",
     "build": "webpack",
     "build:prod": "webpack -p",
     "postinstall": "empathy install --only @polymer/lit-element"
@@ -13,6 +13,8 @@
   "license": "ISC",
   "devDependencies": {
     "@0xcda7a/empathy": "0.0.9",
+    "copy-webpack-plugin": "^4.6.0",
+    "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.14"

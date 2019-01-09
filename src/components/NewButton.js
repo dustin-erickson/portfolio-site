@@ -19,11 +19,11 @@ class NewButton extends LitElement {
         return html`
         <!--HTML templete area -->
 
-            <div class="btn">
+            <button class="btn" @click="${this.handleButtonClick}">
                 <div class="btn-border">
                     <slot></slot>
                 </div>
-            </div>
+            </button>
 
         <!--end HTML templete area -->
 
@@ -31,7 +31,7 @@ class NewButton extends LitElement {
 
             <style>
                 :host {
-                    font-family: Georgia, 'Times New Roman', Times, serif;
+                    display:inline!important;
                 }
                 :host .btn {
                     cursor:pointer;
@@ -91,6 +91,9 @@ class NewButton extends LitElement {
             </style>
         <!--end Styles Area -->
         `;
+    }
+    handleButtonClick(e) {
+        this.dispatchEvent(new CustomEvent('synthClick', e));
     }
 }
 
