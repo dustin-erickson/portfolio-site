@@ -26,7 +26,10 @@ class App extends LitElement {
     render(){
         return html`
             <div id="app">
-            <div class="title" style="position:relative;">Dustin Erickson<span class="dark_toggle light" title="Dark Toggle" @click="${this.handleThemeClick}">&#9788;</span></div>
+                <div class="title" style="position:relative;">
+                    Dustin Erickson
+                    <span class="dark_toggle light" title="Dark Toggle" @click="${this.handleThemeClick}">&#9788;</span>
+                </div>
                 <nav-bar .dark=${this.dark} .noborder=${this.noborder}>
                     <a active href="/" class="nav-link">Home</a>
                     <a href="/projects" class="nav-link">Projects</a>
@@ -51,7 +54,6 @@ class App extends LitElement {
                     </lit-route>
                     <lit-route><h1>404 Not found</h1></lit-route>
                 </div>
-                <link-icons></link-icons>
             </div>
             <style>
                 :host{
@@ -62,6 +64,9 @@ class App extends LitElement {
                 }
                 a {
                     border:${this.noborder ? `none`: ''};
+                }
+                nav-bar {
+                    grid-area:n;
                 }
                 .dark_toggle {
                     margin-top:-10px;
@@ -77,22 +82,29 @@ class App extends LitElement {
                     opacity:0;
                 }
                 #app {
+                    display:grid;
+                    height:100%;
+                    grid-template-rows:auto auto 1fr;
+                    grid-template-areas:
+                        "h h h h h h h h h h h h"
+                        "n n n n n n n n n n n n"
+                        "ct ct ct ct ct ct ct ct ct ct ct ct";
                     background-color: rgba(var(--app-background-r),var(--app-background-g), var(--app-background-b), var(--app-background-a));
-                    height:98vh;
                     color:${this.dark ? `rgba(245,245,245, .7)`:`rgba(0,0,0, .5)`};
-                    transition: background-color .3s;
                 }
                 .title {
                     display:flex;
+                    grid-area:h;
                     align-items:center;
                     font-weight:bold;
                     align-items:center;
                     margin-left:6px;
-                    padding:7px 0px;
+                    padding:15px 10px;
                     font-size:18pt!important;
                     color:${this.dark ? `rgba(245,245,245, .7)`:`rgba(0,0,0, .5)`}
                 }
                 .app-content {
+                    grid-area:ct;
                     border:${this.noborder ? 'none' : this.dark ? `solid 1px rgba(245,245,245, .5)`: `solid 1px rgba(128,128,128, .7)`};
                     max-height:700px;
                     overflow:auto;
@@ -129,6 +141,7 @@ class App extends LitElement {
                 @media screen and (min-width: 899px) {
                     #app {
                         width:85%;
+                        height:98%;
                         margin:auto;
                         margin-top:3px!important;
                         transition: width .3s, margin .3s, background-color .3s;
@@ -142,6 +155,7 @@ class App extends LitElement {
                 @media screen and (min-width: 1500px) {
                     #app {
                         width:70%;
+                        height:95%;
                         margin:auto;
                         margin-top:5px!important;
                         transition: width .3s, margin .3s, background-color .3s;
@@ -171,6 +185,7 @@ class App extends LitElement {
             this.updateBGColor("--app-background-r", 0)
             this.updateBGColor("--app-background-g",13)
             this.updateBGColor("--app-background-b",30)
+            this.updateBGColor("--app-background-a",0.78)
             this.dark = true;
        } else {
            target.classList.remove('dark');
@@ -183,6 +198,7 @@ class App extends LitElement {
            this.updateBGColor("--app-background-r", 255)
             this.updateBGColor("--app-background-g",255)
             this.updateBGColor("--app-background-b",255)
+            this.updateBGColor("--app-background-a",1)
            this.dark = false;
        }
     }

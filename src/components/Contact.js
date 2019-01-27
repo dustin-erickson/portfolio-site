@@ -36,6 +36,9 @@ class Contact extends LitElement {
                     padding:10px 0px;
                     transition: .3s;
                 }
+                .icon {
+                    font-size:17pt;
+                }
             </style>
             <div class="contact">
                 <div style="display:flex;flex-flow:wrap;justify-content:center;">
@@ -47,10 +50,8 @@ class Contact extends LitElement {
                     </div>
                </div>
                <new-button .dark=${this.dark} @synthClick="${this.handleContactClick}" style="display:block;text-align:center;">
-                        <div>
-                            <span class="icon">&#9743;</span>
-                            Contact
-                        </div>
+                            <span class="icon">&#128330;</span>
+                            Send Message
                     </new-button>
             </div>
         `;

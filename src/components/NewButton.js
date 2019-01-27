@@ -50,6 +50,9 @@ class NewButton extends LitElement {
                     border:${this.noborder ? `none` : this.dark || this.primary ? `solid 1.4px silver` : `solid 1.4px #333`};
                     box-shadow:${this.noborder ? `.1px .2px .2px #333` : this.dark || this.primary ? `-.1px -.2px 1px, -.3px -.3px 1px rgba(190,190,190, .2)` : `-.3px -.3px 1px, -.4px -.3px 1px rgba(190,190,190, .2)`};
                 }
+                :host::slotted(div) {
+                    line-height:15px;
+                }
                 :host ::slotted(.icon) {
                     font-size:110%;
                     line-height:110%;
@@ -63,6 +66,9 @@ class NewButton extends LitElement {
                     background-color:${this.noFill ? 'rgba(245,245,245 .2)' : this.primary ? `rgba(6,95,212, 1)` : 'rgba(245, 245, 245, .2)'};
                 }
                 .btn-border {
+                    display:grid;
+                    grid-template-columns:auto auto;
+                    align-items:center;
                     width:100%;
                     height:100%;
                     padding:4px 10px;
