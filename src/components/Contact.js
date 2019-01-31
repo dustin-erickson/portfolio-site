@@ -15,31 +15,7 @@ class Contact extends LitElement {
     }
     render() {
         return html`
-            <style>
-                :host {
-                    color:${this.dark ? `#E8E8E8!important` : '#333'};
-                }
-                h4 {
-                    margin:10px 0px;
-                }
-                .contact {
-                    display:flex;
-                    justify-content:center;
-                    flex-direction:column;
-                    flex-wrap:wrap;
-                }
-                .input-margin {
-                    margin:10px 0px;
-                    transition: .3s;
-                }
-                .input_container {
-                    padding:10px 0px;
-                    transition: .3s;
-                }
-                .icon {
-                    font-size:17pt;
-                }
-            </style>
+            ${this._contactStyle()}
             <div class="contact">
                 <div style="display:flex;flex-flow:wrap;justify-content:center;">
                     <div class="input_container" style="min-width:${this.winSize.width <= 600 ? `300` : this.winSize.width <= 1100 ? `500` : `650`}px;">
@@ -62,7 +38,38 @@ class Contact extends LitElement {
             formDataObj[input.id] = input.value.trim() ? input.value.trim() : null;
         })
         console.log(formDataObj);
+    }
+    _contactStyle() {
+        return html`
+        <style>
+            :host {
+                color:${this.dark ? `#E8E8E8!important` : '#333'};
+            }
+            h4 {
+                margin:10px 0px;
+            }
+            .contact {
+                display:flex;
+                justify-content:center;
+                flex-direction:column;
+                flex-wrap:wrap;
+            }
+            .input-margin {
+                margin:10px 0px;
+                transition: .3s;
+            }
+            .input_container {
+                padding:10px 0px;
+                transition: .3s;
+            }
+            .icon {
+                font-size:17pt;
+            }
+        </style>
+        `;
     } 
 }
+
+
 
 customElements.define("contact-view", Contact);

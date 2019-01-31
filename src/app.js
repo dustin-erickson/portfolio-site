@@ -4,7 +4,7 @@ import './components/NavBar.js';
 import './components/Home.js';
 import './components/Contact.js';
 import './components/Projects.js';
-import './components/Music.js';
+//import './components/Music.js';
 import store from "./store.js";
 
 connectRouter(store);
@@ -25,6 +25,7 @@ class App extends LitElement {
     }
     render(){
         return html`
+            ${this._appStyle()}
             <div id="app">
                 <div class="title" style="position:relative;">
                     Dustin Erickson
@@ -55,6 +56,72 @@ class App extends LitElement {
                     <lit-route><h1>404 Not found</h1></lit-route>
                 </div>
             </div>
+        `;
+    }
+    updateBGColor(cssVar, newColor) {
+        this.style.setProperty(cssVar, newColor);
+    }
+    handleThemeClick(e) {
+        const target = e.target;
+       if (target.classList.contains('light')) {
+            target.classList.remove('light');
+            target.classList.add('dark');
+            target.classList.add('dark_toggle_out')
+            setTimeout(()=>{
+                target.innerHTML = `&#9790;`;
+                target.classList.remove('dark_toggle_out')
+            },500)
+            this.updateBGColor("--app-background-r", 0)
+            this.updateBGColor("--app-background-g",13)
+            this.updateBGColor("--app-background-b",30)
+            this.updateBGColor("--app-background-a",0.78)
+            this.dark = true;
+       } else {
+           target.classList.remove('dark');
+           target.classList.add('light');
+           target.classList.add('dark_toggle_out')
+            setTimeout(()=>{
+                target.innerHTML = `&#9788;`;
+                target.classList.remove('dark_toggle_out')
+            },500)
+           this.updateBGColor("--app-background-r", 255)
+            this.updateBGColor("--app-background-g",255)
+            this.updateBGColor("--app-background-b",255)
+            this.updateBGColor("--app-background-a",1)
+           this.dark = false;
+       }
+    }
+    firstUpdated(){
+        const navLinks = this._allNavLinks();
+        const currentPath = location.pathname;
+    //navlink event listeners
+        navLinks.forEach(nav=>{
+            if(currentPath == nav.pathname) {
+                nav.setAttribute('active', true)
+            } else {
+                nav.removeAttribute('active')
+            }
+            nav.addEventListener('click', _handleLinkClick);
+        })
+        function _handleLinkClick(e){
+            _clearActiveLinks();
+            e.target.setAttribute('active', true);
+        }
+        function _clearActiveLinks(){
+            navLinks.forEach(nav=>nav.removeAttribute('active'));
+        } 
+          //window size event listener
+        this.windowDim = {...this.windowDim, width:window.innerWidth, height:window.innerHeight}
+        window.addEventListener('resize', (e)=>{
+            this.windowDim = {...this.windowDim, width:window.innerWidth, height:window.innerHeight}
+        });
+   
+    }
+    _allNavLinks(){
+        return Array.from(this.shadowRoot.querySelectorAll('.nav-link'));
+    }
+    _appStyle() {
+        return html`
             <style>
                 :host{
                     --app-background-r:255;
@@ -150,7 +217,7 @@ class App extends LitElement {
                         font-size:14pt;
                         transition:font-size .3s;
                     }
-                   
+                    
                 }
                 @media screen and (min-width: 1500px) {
                     #app {
@@ -164,74 +231,10 @@ class App extends LitElement {
                         font-size:16pt;
                         transition:font-size .3s;
                     }
-    
+
                 }
             </style>
         `;
-    }
-    updateBGColor(cssVar, newColor) {
-        this.style.setProperty(cssVar, newColor);
-    }
-    handleThemeClick(e) {
-        const target = e.target;
-       if (target.classList.contains('light')) {
-            target.classList.remove('light');
-            target.classList.add('dark');
-            target.classList.add('dark_toggle_out')
-            setTimeout(()=>{
-                target.innerHTML = `&#9790;`;
-                target.classList.remove('dark_toggle_out')
-            },500)
-            this.updateBGColor("--app-background-r", 0)
-            this.updateBGColor("--app-background-g",13)
-            this.updateBGColor("--app-background-b",30)
-            this.updateBGColor("--app-background-a",0.78)
-            this.dark = true;
-       } else {
-           target.classList.remove('dark');
-           target.classList.add('light');
-           target.classList.add('dark_toggle_out')
-            setTimeout(()=>{
-                target.innerHTML = `&#9788;`;
-                target.classList.remove('dark_toggle_out')
-            },500)
-           this.updateBGColor("--app-background-r", 255)
-            this.updateBGColor("--app-background-g",255)
-            this.updateBGColor("--app-background-b",255)
-            this.updateBGColor("--app-background-a",1)
-           this.dark = false;
-       }
-    }
-    firstUpdated(){
-        const navLinks = this._allNavLinks();
-        const currentPath = location.pathname;
-    //navlink event listeners
-        navLinks.forEach(nav=>{
-            if(currentPath == nav.pathname) {
-                nav.setAttribute('active', true)
-            } else {
-                nav.removeAttribute('active')
-            }
-            nav.addEventListener('click', _handleLinkClick);
-        })
-        function _handleLinkClick(e){
-            _clearActiveLinks();
-            e.target.setAttribute('active', true);
-        }
-        function _clearActiveLinks(){
-            navLinks.forEach(nav=>nav.removeAttribute('active'));
-        } 
-          //window size event listener
-        this.windowDim = {...this.windowDim, width:window.innerWidth, height:window.innerHeight}
-        window.addEventListener('resize', (e)=>{
-            this.windowDim = {...this.windowDim, width:window.innerWidth, height:window.innerHeight}
-        });
-
-        //event listener for checkbox theme change
-   
-    }
-    _allNavLinks(){
-        return Array.from(this.shadowRoot.querySelectorAll('.nav-link'));
     }
 }
 

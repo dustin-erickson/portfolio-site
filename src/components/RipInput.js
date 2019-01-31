@@ -21,7 +21,60 @@ class RipInput extends LitElement {
     }
     render() {
         return html`
-            <style>
+            ${this._ripStyle()}
+            <div class="input-box" .title=${this.title} aria-label="${this.label}">
+                <input
+                    value="${this.value}"
+                    type="${this.type}" 
+                    aria-label="${this.label}"
+                    @input=${this._handleInput} 
+                >
+                <label>${this.label}</label>
+            </div>
+        `;
+    }
+    _handleInput(e) {
+        this.value = e.target.value.trim() && typeof(e.target.value.trim()) === 'string' && e.target.value.trim().length > 0 ? e.target.value.trim() : '';
+    }
+    firstUpdated() {
+        const inputBox = this.shadowRoot.querySelector(".input-box");
+        const input = this.shadowRoot.querySelector("input");
+        const label = this.shadowRoot.querySelector('label');
+        const onInputFocus = () => {
+            label.classList.add('shrunkLabel');
+            inputBox.classList.add('highlighted');
+        };
+        const onInputBlur = () => {
+            label.classList.remove('shrunkLabel');
+            inputBox.classList.remove('highlighted');
+            if (!this.value.trim()) {
+                //no value ...remove styles for label
+                label.classList.remove('hasvalue');
+                label.style.top = '';
+                label.style.fontSize = '';
+            } else {
+                label.classList.add('hasvalue');
+            }
+            label.style.color = '';
+        };
+        const boxFocusInput = () => {
+            input.focus();
+        };
+        //set inital styles accomidate for value being pre set.
+        if(this.value) {
+            label.classList.add('hasvalue');
+        }
+        input.addEventListener('focus', onInputFocus);
+        input.addEventListener('blur', onInputBlur);
+        inputBox.addEventListener("click", boxFocusInput);
+    }
+    disconnectedCallback() {
+        this.shadowRoot.querySelector(".input-box").cloneNode(true);
+        this.shadowRoot.querySelector("input").cloneNode(true);
+    }
+    _ripStyle() {
+        return html`
+        <style>
             :host {
                 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
                 width:100%;
@@ -153,57 +206,8 @@ class RipInput extends LitElement {
 
                 }
             }
-            </style>
-            <div class="input-box" .title=${this.title} aria-label="${this.label}">
-                
-                <input
-                    value="${this.value}"
-                    type="${this.type}" 
-                    aria-label="${this.label}"
-                    @input=${this._handleInput} 
-                >
-                <label>${this.label}</label>
-            </div>
+        </style>
         `;
-    }
-    _handleInput(e) {
-        this.value = e.target.value.trim() && typeof(e.target.value.trim()) === 'string' && e.target.value.trim().length > 0 ? e.target.value.trim() : '';
-    }
-    firstUpdated() {
-        const inputBox = this.shadowRoot.querySelector(".input-box");
-        const input = this.shadowRoot.querySelector("input");
-        const label = this.shadowRoot.querySelector('label');
-        const onInputFocus = () => {
-            label.classList.add('shrunkLabel');
-            inputBox.classList.add('highlighted');
-        };
-        const onInputBlur = () => {
-            label.classList.remove('shrunkLabel');
-            inputBox.classList.remove('highlighted');
-            if (!this.value.trim()) {
-                //no value ...remove styles for label
-                label.classList.remove('hasvalue');
-                label.style.top = '';
-                label.style.fontSize = '';
-            } else {
-                label.classList.add('hasvalue');
-            }
-            label.style.color = '';
-        };
-        const boxFocusInput = () => {
-            input.focus();
-        };
-        //set inital styles accomidate for value being pre set.
-        if(this.value) {
-            label.classList.add('hasvalue');
-        }
-        input.addEventListener('focus', onInputFocus);
-        input.addEventListener('blur', onInputBlur);
-        inputBox.addEventListener("click", boxFocusInput);
-    }
-    disconnectedCallback() {
-        this.shadowRoot.querySelector(".input-box").cloneNode(true);
-        this.shadowRoot.querySelector("input").cloneNode(true);
     }
     
 }

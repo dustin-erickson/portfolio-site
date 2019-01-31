@@ -1,16 +1,16 @@
 const path = require('path');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
     entry: {
-       'bundle' : './src/app.js',
-        'components/RipInput':'./src/components/RipInput.js',
-        'components/NavBar':'./src/components/NavBar.js',
+       'static/bundle' : './src/app.js'
     },
     output : {
-        path:path.resolve(__dirname, 'dist/static'),
+        path:path.resolve(__dirname, 'dist'),
         filename:`[name].js`,
     },
     plugins:[
+        new CleanWebpackPlugin(['dist', 'static']),
         new CopyWebpackPlugin([
             {
                 from:'./index.html',

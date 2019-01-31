@@ -21,6 +21,69 @@ class Home extends LitElement {
     }
     render() {
         return html`
+           ${this._homeStyle()}
+            <div class="home">
+                <h4>Home Component</h4>
+                <div class="tc_container">
+                    <div>
+                        <div>r: ${this.background_r}</div>
+                        <input type="range" min="0" max="255" .value="${this.background_r}" @input="${this.handleBackground_r}">
+                    </div>
+                    <div>
+                        <div>g: ${this.background_g}</div>
+                        <input type="range" min="0" max="255" .value="${this.background_g}" @input="${this.handleBackground_g}">
+                    </div>
+                    <div>
+                        <div>b: ${this.background_b}</div>
+                        <input type="range" min="0" max="255" .value="${this.background_b}" @input="${this.handleBackground_b}">
+                    </div>
+                    <div>
+                        <div>a: ${this.background_a}</div> 
+                        <input type="range" min="0" max="1" step=".02" .value="${this.background_a}" @input="${this.handleBackground_a}">
+                    </div>  
+                </div>
+            </div>
+        `;
+    } 
+    updated(props) {
+        props.forEach((prevVal, prop)=>{
+            if(prop === 'dark' && prevVal === false) {
+                this.background_r = 0;
+                this.background_g = 13;
+                this.background_b = 30;
+                this.background_a = 0.78;
+            } else if(prop === 'dark' && prevVal === true) {
+                this.background_r = 255;
+                this.background_g = 255;
+                this.background_b = 255;
+                this.background_a = 1;
+            }
+        })
+    }
+    firstUpdated() {
+
+    }
+    handleBackground_r(e) {
+        this.background_r = e.target.value;
+        this.dispatchEvent(new CustomEvent('updateBGr', {detail:this.background_r}));
+    }
+    handleBackground_g(e) {
+        this.background_g = e.target.value;
+        this.dispatchEvent(new CustomEvent('updateBGg', {detail:this.background_g}));
+    }
+    handleBackground_b(e) {
+        this.background_b = e.target.value;
+        this.dispatchEvent(new CustomEvent('updateBGb', {detail:this.background_b}));
+    }
+    handleBackground_a(e) {
+        this.background_a = e.target.value;
+        this.dispatchEvent(new CustomEvent('updateBGa', {detail:this.background_a}));
+    }
+    themeChange(newVal, OldVal) {
+        console.log("HAS CHANGE FIRED.")
+    }
+    _homeStyle() {
+        return html`
             <style>
                 :host {
                     color:${this.dark ? `#E8E8E8!important` : '#333'};
@@ -137,7 +200,7 @@ class Home extends LitElement {
                 input[type=range]:focus::-ms-fill-upper {
                     background: #4a90cc;
                 }
-
+    
                 /* Extra small devices (phones, 600px and down) */
                 @media only screen and (max-width: 600px) {
                     .tc_container {
@@ -147,68 +210,10 @@ class Home extends LitElement {
                         grid-template-rows: repeat(auto, 1fr);
                     }
                 } 
-
             </style>
-            <div class="home">
-                <h4>Home Component</h4>
-                <div class="tc_container">
-                    <div>
-                        <div>r: ${this.background_r}</div>
-                        <input type="range" min="0" max="255" .value="${this.background_r}" @input="${this.handleBackground_r}">
-                    </div>
-                    <div>
-                        <div>g: ${this.background_g}</div>
-                        <input type="range" min="0" max="255" .value="${this.background_g}" @input="${this.handleBackground_g}">
-                    </div>
-                    <div>
-                        <div>b: ${this.background_b}</div>
-                        <input type="range" min="0" max="255" .value="${this.background_b}" @input="${this.handleBackground_b}">
-                    </div>
-                    <div>
-                        <div>a: ${this.background_a}</div> 
-                        <input type="range" min="0" max="1" step=".02" .value="${this.background_a}" @input="${this.handleBackground_a}">
-                    </div>  
-                </div>
-            </div>
         `;
-    } 
-    updated(props) {
-        props.forEach((prevVal, prop)=>{
-            if(prop === 'dark' && prevVal === false) {
-                this.background_r = 0;
-                this.background_g = 13;
-                this.background_b = 30;
-                this.background_a = 0.78;
-            } else if(prop === 'dark' && prevVal === true) {
-                this.background_r = 255;
-                this.background_g = 255;
-                this.background_b = 255;
-                this.background_a = 1;
-            }
-        })
-    }
-    firstUpdated() {
-
-    }
-    handleBackground_r(e) {
-        this.background_r = e.target.value;
-        this.dispatchEvent(new CustomEvent('updateBGr', {detail:this.background_r}));
-    }
-    handleBackground_g(e) {
-        this.background_g = e.target.value;
-        this.dispatchEvent(new CustomEvent('updateBGg', {detail:this.background_g}));
-    }
-    handleBackground_b(e) {
-        this.background_b = e.target.value;
-        this.dispatchEvent(new CustomEvent('updateBGb', {detail:this.background_b}));
-    }
-    handleBackground_a(e) {
-        this.background_a = e.target.value;
-        this.dispatchEvent(new CustomEvent('updateBGa', {detail:this.background_a}));
-    }
-    themeChange(newVal, OldVal) {
-        console.log("HAS CHANGE FIRED.")
     }
 }
+
 
 customElements.define("home-view", Home);

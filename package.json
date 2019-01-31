@@ -4,15 +4,17 @@
   "description": "personal presentation website",
   "main": "app.js",
   "scripts": {
-    "serve": "webpack-dev-server --mode development --entry ./src/app.js --output-filename ./dist/static/bundle.js",
+    "serve": "webpack-dev-server --mode development --entry ./src/app.js --output-filename ./static/bundle.js",
     "build": "webpack",
     "build:prod": "webpack -p",
+    "now-build": "npm run build:prod",
     "postinstall": "empathy install --only @polymer/lit-element"
   },
   "author": "Dustin Erickson",
   "license": "ISC",
   "devDependencies": {
     "@0xcda7a/empathy": "0.0.9",
+    "clean-webpack-plugin": "^1.0.1",
     "copy-webpack-plugin": "^4.6.0",
     "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.28.2",
