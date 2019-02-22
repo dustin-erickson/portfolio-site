@@ -1,4 +1,4 @@
-import {LitElement, html} from '../../assets/@polymer/lit-element/lit-element.js';
+import {LitElement, html} from 'lit-element';
 class NewButton extends LitElement {
     static get properties() {
         return {

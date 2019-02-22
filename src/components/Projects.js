@@ -1,4 +1,4 @@
-import {LitElement, html} from '../../assets/@polymer/lit-element';
+import {LitElement, html} from 'lit-element';
 
 class Projects extends LitElement {
     render() {

@@ -8,7 +8,7 @@
     "build": "webpack",
     "build:prod": "webpack -p",
     "now-build": "npm run build:prod",
-    "postinstall": "empathy install --only @polymer/lit-element"
+    "postinstall": "empathy install --only lit-element"
   },
   "author": "Dustin Erickson",
   "license": "ISC",
@@ -16,14 +16,17 @@
     "@0xcda7a/empathy": "0.0.9",
     "clean-webpack-plugin": "^1.0.1",
     "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^2.1.0",
     "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
-    "@polymer/lit-element": "^0.6.5",
-    "lit-redux-router": "^0.4.0",
+    "lit-element": "^2.0.1",
+    "lit-html": "^1.0.0",
+    "lit-redux-router": "^0.7.0",
     "pwa-helpers": "^0.9.0",
     "redux": "^4.0.1"
   }

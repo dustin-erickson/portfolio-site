@@ -1,4 +1,4 @@
-import {LitElement, html} from "@polymer/lit-element";
+import {LitElement, html} from "lit-element";
 
 class RipInput extends LitElement {
     static get properties() {

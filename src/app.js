@@ -1,12 +1,17 @@
-import {LitElement, html} from "../assets/@polymer/lit-element/lit-element";
+import {LitElement, html, unsafeCSS} from "lit-element";
 import {connectRouter} from "lit-redux-router";
+
+//components
 import './components/NavBar.js';
 import './components/Home.js';
 import './components/Contact.js';
 import './components/Projects.js';
 //import './components/Music.js';
+
+//store for router
 import store from "./store.js";
 
+//connect router
 connectRouter(store);
 
 class App extends LitElement {
@@ -17,6 +22,106 @@ class App extends LitElement {
             windowDim:{type:Object}
         }
     }
+
+    static get styles() {
+        return unsafeCSS`
+        :host{
+            --app-background-r:255;
+            --app-background-g:255;
+            --app-background-b:255;
+            --app-background-a:1;
+        }
+       
+        nav-bar {
+            grid-area:n;
+        }
+        #app {
+            display:grid;
+            height:100%;
+            grid-template-rows:auto auto 1fr;
+            grid-template-areas:
+                "h h h h h h h h h h h h"
+                "n n n n n n n n n n n n"
+                "ct ct ct ct ct ct ct ct ct ct ct ct";
+            background-color: rgba(var(--app-background-r),var(--app-background-g), var(--app-background-b), var(--app-background-a));
+            color:${this.dark ? `rgba(245,245,245, .7)`:`rgba(0,0,0, .5)`};
+        }
+        .title {
+            display:flex;
+            grid-area:h;
+            align-items:center;
+            font-weight:bold;
+            align-items:center;
+            margin-left:6px;
+            padding:15px 10px;
+            font-size:18pt!important;
+            color:${this.dark ? `rgba(245,245,245, .7)`:`rgba(0,0,0, .5)`}
+        }
+        .app-content {
+            grid-area:ct;
+            border:${this.noborder ? 'none' : this.dark ? `solid 1px rgba(245,245,245, .5)`: `solid 1px rgba(128,128,128, .7)`};
+            max-height:700px;
+            overflow:auto;
+            border-top:none;
+            padding:10px 25px;
+        }
+        h4 {
+            margin:0;
+        }
+        @media screen and (min-width: 0px) {
+            #app {
+                width:100%;
+                margin:auto;
+                transition: width .7s;
+            }
+            .title {
+                display:flex;
+                font-size:10pt;
+                transition:font-size .3s;
+            }
+            .title > span {
+                cursor:pointer;
+                padding-right:15px;
+                margin-left:auto;
+                font-size:13pt;
+            }
+        }
+        @media screen and (min-width: 688px) {
+            .title {
+                font-size:12pt;
+                transition:font-size .3s;
+            }
+        }
+        @media screen and (min-width: 899px) {
+            #app {
+                width:85%;
+                height:98%;
+                margin:auto;
+                margin-top:3px!important;
+                transition: width .3s, margin .3s, background-color .3s;
+            }
+            .title {
+                font-size:14pt;
+                transition:font-size .3s;
+            }
+            
+        }
+        @media screen and (min-width: 1500px) {
+            #app {
+                width:70%;
+                height:95%;
+                margin:auto;
+                margin-top:5px!important;
+                transition: width .3s, margin .3s, background-color .3s;
+            }
+            .title {
+                font-size:16pt;
+                transition:font-size .3s;
+            }
+
+        }
+    `;
+    }
     constructor() {
         super();
         this.dark = false;
@@ -25,7 +130,28 @@ class App extends LitElement {
     }
     render(){
         return html`
-            ${this._appStyle()}
+            <style>
+            .dark_toggle {
+                margin-top:-10px;
+                display:inline-block;
+                font-size:11pt!important;
+                position:relative;
+                top:0;
+                opacity:1;
+                transition:all .2s ease-in-out;
+            }
+            .dark_toggle_out {
+                top:25px;
+                opacity:0;
+            }
+            .title {color:${this.dark ? `rgba(245,245,245, .7)`:`rgba(0,0,0, .5)`}}
+            a {
+                border:${this.noborder ? `none`: ''};
+            }
+            #app{
+                color:${this.dark ? `rgba(245,245,245, .7)`:`rgba(0,0,0, .5)`};
+            }
+            </style>
             <div id="app">
                 <div class="title" style="position:relative;">
                     Dustin Erickson
@@ -122,118 +248,7 @@ class App extends LitElement {
     }
     _appStyle() {
         return html`
-            <style>
-                :host{
-                    --app-background-r:255;
-                    --app-background-g:255;
-                    --app-background-b:255;
-                    --app-background-a:1;
-                }
-                a {
-                    border:${this.noborder ? `none`: ''};
-                }
-                nav-bar {
-                    grid-area:n;
-                }
-                .dark_toggle {
-                    margin-top:-10px;
-                    display:inline-block;
-                    font-size:11pt!important;
-                    position:relative;
-                    top:0;
-                    opacity:1;
-                    transition:all .2s ease-in-out;
-                }
-                .dark_toggle_out {
-                    top:25px;
-                    opacity:0;
-                }
-                #app {
-                    display:grid;
-                    height:100%;
-                    grid-template-rows:auto auto 1fr;
-                    grid-template-areas:
-                        "h h h h h h h h h h h h"
-                        "n n n n n n n n n n n n"
-                        "ct ct ct ct ct ct ct ct ct ct ct ct";
-                    background-color: rgba(var(--app-background-r),var(--app-background-g), var(--app-background-b), var(--app-background-a));
-                    color:${this.dark ? `rgba(245,245,245, .7)`:`rgba(0,0,0, .5)`};
-                }
-                .title {
-                    display:flex;
-                    grid-area:h;
-                    align-items:center;
-                    font-weight:bold;
-                    align-items:center;
-                    margin-left:6px;
-                    padding:15px 10px;
-                    font-size:18pt!important;
-                    color:${this.dark ? `rgba(245,245,245, .7)`:`rgba(0,0,0, .5)`}
-                }
-                .app-content {
-                    grid-area:ct;
-                    border:${this.noborder ? 'none' : this.dark ? `solid 1px rgba(245,245,245, .5)`: `solid 1px rgba(128,128,128, .7)`};
-                    max-height:700px;
-                    overflow:auto;
-                    border-top:none;
-                    padding:10px 25px;
-                }
-                h4 {
-                    margin:0;
-                }
-                @media screen and (min-width: 0px) {
-                    #app {
-                        width:100%;
-                        margin:auto;
-                        transition: width .7s;
-                    }
-                    .title {
-                        display:flex;
-                        font-size:10pt;
-                        transition:font-size .3s;
-                    }
-                    .title > span {
-                        cursor:pointer;
-                        padding-right:15px;
-                        margin-left:auto;
-                        font-size:13pt;
-                    }
-                }
-                @media screen and (min-width: 688px) {
-                    .title {
-                        font-size:12pt;
-                        transition:font-size .3s;
-                    }
-                }
-                @media screen and (min-width: 899px) {
-                    #app {
-                        width:85%;
-                        height:98%;
-                        margin:auto;
-                        margin-top:3px!important;
-                        transition: width .3s, margin .3s, background-color .3s;
-                    }
-                    .title {
-                        font-size:14pt;
-                        transition:font-size .3s;
-                    }
-                    
-                }
-                @media screen and (min-width: 1500px) {
-                    #app {
-                        width:70%;
-                        height:95%;
-                        margin:auto;
-                        margin-top:5px!important;
-                        transition: width .3s, margin .3s, background-color .3s;
-                    }
-                    .title {
-                        font-size:16pt;
-                        transition:font-size .3s;
-                    }
-
-                }
-            </style>
+         
         `;
     }
 }
