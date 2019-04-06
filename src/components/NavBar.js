@@ -3,7 +3,7 @@ import {LitElement, html} from 'lit-element';
 class NavBar extends LitElement {
     static get properties() {
         return {
-            dark:{type:Boolean},
+            dark:{type:Boolean, reflect:true},
             noborder:{type:Boolean}
         }
     }

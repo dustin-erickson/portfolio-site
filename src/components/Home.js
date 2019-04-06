@@ -80,7 +80,7 @@ class Home extends LitElement {
         this.dispatchEvent(new CustomEvent('updateBGa', {detail:this.background_a}));
     }
     themeChange(newVal, OldVal) {
-        console.log("HAS CHANGE FIRED.")
+        console.log("Theme HAS CHANGE FIRED.")
     }
     _homeStyle() {
         return html`

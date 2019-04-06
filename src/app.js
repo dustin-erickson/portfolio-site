@@ -17,7 +17,7 @@ connectRouter(store);
 class App extends LitElement {
     static get properties() {
         return {
-            dark:{type:Boolean},    
+            dark:{type:Boolean, reflect:true},    
             noborder:{type:Boolean},
             windowDim:{type:Object}
         }
@@ -237,9 +237,9 @@ class App extends LitElement {
             navLinks.forEach(nav=>nav.removeAttribute('active'));
         } 
           //window size event listener
-        this.windowDim = {...this.windowDim, width:window.innerWidth, height:window.innerHeight}
+        this.windowDim = Object.assign(this.windowDim,{width:window.innerWidth, height:window.innerHeight});
         window.addEventListener('resize', (e)=>{
-            this.windowDim = {...this.windowDim, width:window.innerWidth, height:window.innerHeight}
+            this.windowDim = Object.assign(this.windowDim,{width:window.innerWidth, height:window.innerHeight});
         });
    
     }
