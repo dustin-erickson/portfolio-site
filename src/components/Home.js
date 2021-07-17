@@ -1,4 +1,5 @@
 import {LitElement, html} from 'lit-element';
+const bgSVG1 = new URL('../../assets/images/oceanscape.svg', import.meta.url).toString();
 
 class Home extends LitElement {
     static get properties(){
@@ -23,7 +24,16 @@ class Home extends LitElement {
         return html`
            ${this._homeStyle()}
             <div class="home">
-                <h4>Home Component</h4>
+                <div style="position:relative;">
+                    <div class="bg_svg" style="z-index:5;font-family:tahoma;font-size:13pt;position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+                        <div>
+                            <h1>Hello World</h1>
+                            <p>I'm a web tinkerer, enjoying the vast universe of web related technologies floating around.</p>
+                            <p>My main is javascript, but I am acquainted with it's older peers PHP, MySQL, Ect.</p>
+                            <p>I enjoy understanding user interaction and user expierince the most.</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="tc_container">
                     <div>
                         <div>r: ${this.background_r}</div>
@@ -79,9 +89,7 @@ class Home extends LitElement {
         this.background_a = e.target.value;
         this.dispatchEvent(new CustomEvent('updateBGa', {detail:this.background_a}));
     }
-    themeChange(newVal, OldVal) {
-        console.log("Theme HAS CHANGE FIRED.")
-    }
+
     _homeStyle() {
         return html`
             <style>
@@ -91,9 +99,22 @@ class Home extends LitElement {
                 h4 {
                     margin:0;
                 }
+                .bg_svg::before {
+                    content: "";
+                    position: absolute;
+                    top: 0px;
+                    right: 0px;
+                    bottom: 0px;
+                    left: 0px;
+                    background-image:url(${bgSVG1});
+                    background-position:center; 
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    opacity:.06;
+                }
                 .home {
                     display:grid;
-                    grid-template-rows:auto 1fr auto;
+                    grid-template-rows:1fr auto;
                     height:100%;
                 }
                 .tc_container {
@@ -113,6 +134,7 @@ class Home extends LitElement {
                     width:40px;
                 }
                 .tc_container > div > input {
+                    background:none;
                     width:100%;
                 }
                 input[type=range] {

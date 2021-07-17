@@ -40,7 +40,7 @@ class App extends LitElement {
             height:100%;
             grid-template-rows:auto auto 1fr;
             grid-template-areas:
-                "h h h h h h h h h h h h"
+                "h h h h h h h h h h h t"
                 "n n n n n n n n n n n n"
                 "ct ct ct ct ct ct ct ct ct ct ct ct";
             background-color: rgba(var(--app-background-r),var(--app-background-g), var(--app-background-b), var(--app-background-a));
@@ -50,11 +50,11 @@ class App extends LitElement {
             display:flex;
             grid-area:h;
             align-items:center;
-            font-weight:bold;
             align-items:center;
             margin-left:6px;
             padding:15px 10px;
-            font-size:18pt!important;
+            font-size:19pt!important;
+            font-family:arial;
             color:${this.dark ? `rgba(245,245,245, .7)`:`rgba(0,0,0, .5)`}
         }
         .app-content {
@@ -76,19 +76,19 @@ class App extends LitElement {
             }
             .title {
                 display:flex;
-                font-size:10pt;
+                font-size:14pt;
                 transition:font-size .3s;
             }
             .title > span {
                 cursor:pointer;
                 padding-right:15px;
                 margin-left:auto;
-                font-size:13pt;
+                font-size:19pt;
             }
         }
         @media screen and (min-width: 688px) {
             .title {
-                font-size:12pt;
+                font-size:14pt;
                 transition:font-size .3s;
             }
         }
@@ -115,7 +115,7 @@ class App extends LitElement {
                 transition: width .3s, margin .3s, background-color .3s;
             }
             .title {
-                font-size:16pt;
+                font-size:14pt;
                 transition:font-size .3s;
             }
 
@@ -132,11 +132,12 @@ class App extends LitElement {
         return html`
             <style>
             .dark_toggle {
-                margin-top:-10px;
-                display:inline-block;
+                grid-area:t;
+                display:flex;
+                align-items: center;
+                justify-content: center;
                 font-size:11pt!important;
-                position:relative;
-                top:0;
+                cursor:pointer;
                 opacity:1;
                 transition:all .2s ease-in-out;
             }
@@ -155,8 +156,8 @@ class App extends LitElement {
             <div id="app">
                 <div class="title" style="position:relative;">
                     Dustin Erickson
-                    <span class="dark_toggle light" title="Dark Toggle" @click="${this.handleThemeClick}">&#9788;</span>
                 </div>
+                <span class="dark_toggle light" title="Dark Toggle" @click="${this.handleThemeClick}">&#9788;</span>
                 <nav-bar .dark=${this.dark} .noborder=${this.noborder}>
                     <a active href="/" class="nav-link">Home</a>
                     <a href="/projects" class="nav-link">Projects</a>

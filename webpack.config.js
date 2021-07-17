@@ -11,12 +11,11 @@ module.exports = {
     },
     plugins:[
         new CleanWebpackPlugin(['dist', 'static']),
-        new CopyWebpackPlugin([
-            {
-                from:'./index.html',
-                to:''
-            }
-        ]),
+        new CopyWebpackPlugin({
+            patterns: [
+                {from:'./index.html',to:''}
+            ]
+        }),
     ],
     devServer:{
         historyApiFallback: true
