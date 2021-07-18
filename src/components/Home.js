@@ -1,5 +1,5 @@
 import {LitElement, html} from 'lit-element';
-const bgSVG1 = new URL('../../assets/images/oceanscape.svg', import.meta.url).toString();
+const bgSVG1 = new URL('/assets/images/oceanscape.svg', import.meta.url).toString();
 
 class Home extends LitElement {
     static get properties(){
