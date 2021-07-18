@@ -33,21 +33,24 @@ class Home extends LitElement {
                         </div>
                     </div>
                 </div>
+                <div style="margin-top:25px;padding:0px 15px;">
+                Tweak colors below for background fun.
+                </div>
                 <div class="tc_container">
                     <div>
-                        <div>r: ${this.background_r}</div>
-                        <input type="range" min="0" max="255" .value="${this.background_r}" @input="${this.handleBackground_r}">
+                        <div style="color:whitesmoke;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:red;border-radius:8px;">${this.background_r}</div>
+                        <input type="range" style="background-color:rgba(255,0,0,.5)" min="0" max="255" .value="${this.background_r}" @input="${this.handleBackground_r}">
                     </div>
                     <div>
-                        <div>g: ${this.background_g}</div>
-                        <input type="range" min="0" max="255" .value="${this.background_g}" @input="${this.handleBackground_g}">
+                        <div style="color:whitesmoke;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:green;border-radius:8px;">${this.background_g}</div>
+                        <input type="range" style="background-color:rgba(0,255,0,.5)" min="0" max="255" .value="${this.background_g}" @input="${this.handleBackground_g}">
                     </div>
                     <div>
-                        <div>b: ${this.background_b}</div>
-                        <input type="range" min="0" max="255" .value="${this.background_b}" @input="${this.handleBackground_b}">
+                        <div style="color:whitesmoke;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:blue;border-radius:8px;">${this.background_b}</div>
+                        <input type="range" style="background-color:rgba(0,0,255,.5)" min="0" max="255" .value="${this.background_b}" @input="${this.handleBackground_b}">
                     </div>
                     <div>
-                        <div>a: ${this.background_a}</div> 
+                        <div style="color:#333;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:whitesmoke;border-radius:8px;">${this.background_a}</div> 
                         <input type="range" min="0" max="1" step=".02" .value="${this.background_a}" @input="${this.handleBackground_a}">
                     </div>  
                 </div>
@@ -137,6 +140,7 @@ class Home extends LitElement {
                     grid-gap:15px;
                     grid-row:4/-1;
                     align-items:center;
+                    padding:5px;
                 }
                 .tc_container > div {
                     display:flex;
@@ -154,7 +158,10 @@ class Home extends LitElement {
                 input[type=range] {
                     -webkit-appearance: none;
                     width: 100%;
+                    height:35px;
                     margin: 5px 0;
+                    border:solid 1px #acacac;
+                    border-radius:8px;
                 }
                 input[type=range]:focus {
                     outline: none;
@@ -171,10 +178,10 @@ class Home extends LitElement {
                 input[type=range]::-webkit-slider-thumb {
                     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
                     border: 1px solid #000000;
-                    height: 11px;
-                    width: 5px;
-                    border-radius: 3px;
-                    background: #ffffff;
+                    height: 25px;
+                    width: 17px;
+                    border-radius: 8px;
+                    background: #acacac;
                     cursor: pointer;
                     -webkit-appearance: none;
                     margin-top: -5px;
@@ -194,10 +201,10 @@ class Home extends LitElement {
                 input[type=range]::-moz-range-thumb {
                     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
                     border: 1px solid #000000;
-                    height: 11px;
-                    width: 5px;
-                    border-radius: 3px;
-                    background: #ffffff;
+                    height: 25px;
+                    width: 17px;
+                    border-radius: 8px;
+                    background: #acacac;
                     cursor: pointer;
                 }
                 input[type=range]::-ms-track {
@@ -223,12 +230,11 @@ class Home extends LitElement {
                 input[type=range]::-ms-thumb {
                     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
                     border: 1px solid #000000;
-                    height: 11px;
-                    width: 5px;
-                    border-radius: 3px;
-                    background: #ffffff;
+                    height: 25px;
+                    width: 17px;
+                    border-radius: 8px;
+                    background: #010101;
                     cursor: pointer;
-                    height: 1px;
                 }
                 input[type=range]:focus::-ms-fill-lower {
                     background: #3071a9;
