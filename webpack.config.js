@@ -15,7 +15,7 @@ module.exports = {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 loader: 'file-loader',
                 options: {
-                    name: '/static/[name].[ext]',
+                    name: '/static/[name].[ext]'
                 },
             },
         ],
