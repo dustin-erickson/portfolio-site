@@ -66,7 +66,7 @@ class App extends LitElement {
             max-height:700px;
             overflow:auto;
             border-top:none;
-            padding:10px 25px;
+            padding:10px 0px;
         }
         h4 {
             margin:0;

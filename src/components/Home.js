@@ -23,7 +23,7 @@ class Home extends LitElement {
         return html`
            ${this._homeStyle()}
             <div class="home">
-                <div style="position:relative;">
+                <div style="position:relative;padding:0px;10px;">
                     <div class="bg_svg" style="z-index:5;font-family:tahoma;font-size:13pt;position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;">
                         <div>
                             <h1>Hello World</h1>
