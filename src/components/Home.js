@@ -28,7 +28,7 @@ class Home extends LitElement {
                         <div>
                             <h1>Hello World</h1>
                             <p>I'm a web tinkerer, enjoying the vast universe of web related technologies floating around.</p>
-                            <p>My main is javascript, but I am acquainted with it's older peers PHP, MySQL, Ect.</p>
+                            <p>My main is javascript, but I am acquainted with it's other peers PHP, MySQL, Ect.</p>
                             <p>I enjoy understanding user interaction and user expierince the most.</p>
                         </div>
                     </div>
