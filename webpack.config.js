@@ -9,6 +9,17 @@ module.exports = {
         path:path.resolve(__dirname, 'dist'),
         filename:`[name].js`,
     },
+    module: {
+        rules: [
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loader: 'file-loader',
+                options: {
+                    name: '/assets/images/[name].[ext]',
+                },
+            },
+        ],
+    },
     plugins:[
         new CleanWebpackPlugin(['dist', 'static']),
         new CopyWebpackPlugin({
