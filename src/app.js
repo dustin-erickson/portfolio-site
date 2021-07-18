@@ -63,8 +63,6 @@ class App extends LitElement {
         .app-content {
             grid-area:ct;
             border:${this.noborder ? 'none' : this.dark ? `solid 1px rgba(245,245,245, .5)`: `solid 1px rgba(128,128,128, .7)`};
-            max-height:700px;
-            overflow:auto;
             border-top:none;
             padding:10px 0px;
         }
@@ -161,7 +159,7 @@ class App extends LitElement {
                 <div class="title" style="position:relative;">
                     Dustin Erickson
                 </div>
-                <span class="dark_toggle light" title="Dark Toggle" @click="${this.handleThemeClick}">&#9788;</span>
+                <span class="dark_toggle ${this.dark ? 'dark' : 'light'}" title="Dark Toggle" @click="${this.handleThemeClick}">&#9788;</span>
                 <nav-bar .dark=${this.dark} .noborder=${this.noborder}>
                     <a active href="/" class="nav-link">Home</a>
                     <a href="/projects" class="nav-link">Projects</a>
@@ -193,36 +191,11 @@ class App extends LitElement {
         this.style.setProperty(cssVar, newColor);
     }
     handleThemeClick(e) {
-        const target = e.target;
-       if (target.classList.contains('light')) {
-            target.classList.remove('light');
-            target.classList.add('dark');
-            target.classList.add('dark_toggle_out')
-            setTimeout(()=>{
-                target.innerHTML = `&#9790;`;
-                target.classList.remove('dark_toggle_out')
-            },500)
-            this.updateBGColor("--app-background-r", 0)
-            this.updateBGColor("--app-background-g",13)
-            this.updateBGColor("--app-background-b",30)
-            this.updateBGColor("--app-background-a",0.78)
-            this.dark = true;
-       } else {
-           target.classList.remove('dark');
-           target.classList.add('light');
-           target.classList.add('dark_toggle_out')
-            setTimeout(()=>{
-                target.innerHTML = `&#9788;`;
-                target.classList.remove('dark_toggle_out')
-            },500)
-           this.updateBGColor("--app-background-r", 255)
-            this.updateBGColor("--app-background-g",255)
-            this.updateBGColor("--app-background-b",255)
-            this.updateBGColor("--app-background-a",1)
-           this.dark = false;
-       }
+        this._setTheme();
     }
     firstUpdated(){
+        //set the theme based on if dark is passed to app
+        this._setTheme(true);
         const navLinks = this._allNavLinks();
         const currentPath = location.pathname;
     //navlink event listeners
@@ -247,6 +220,48 @@ class App extends LitElement {
             this.windowDim = Object.assign(this.windowDim,{width:window.innerWidth, height:window.innerHeight});
         });
    
+    }
+    _setTheme(initialTheme=false){
+        const themeToggleElement = this.shadowRoot.querySelector('.dark_toggle');
+        if(initialTheme) {
+            themeToggleElement.classList.remove('light')
+            themeToggleElement.classList.remove('dark')
+            if(this.dark) {
+                themeToggleElement.classList.add('light');
+            } else {
+                themeToggleElement.classList.add('dark');
+            }
+            
+        }
+        
+        if (themeToggleElement.classList.contains('light')) {
+            themeToggleElement.classList.remove('light');
+            themeToggleElement.classList.add('dark');
+            themeToggleElement.classList.add('dark_toggle_out')
+            setTimeout(()=>{
+                themeToggleElement.innerHTML = `&#9790;`;
+                themeToggleElement.classList.remove('dark_toggle_out')
+            },500)
+            this.updateBGColor("--app-background-r", 0)
+            this.updateBGColor("--app-background-g",13)
+            this.updateBGColor("--app-background-b",30)
+            this.updateBGColor("--app-background-a",0.78)
+            this.dark = true;
+       } else {
+           themeToggleElement.classList.remove('dark');
+           themeToggleElement.classList.add('light');
+           themeToggleElement.classList.add('dark_toggle_out')
+            setTimeout(()=>{
+                themeToggleElement.innerHTML = `&#9788;`;
+                themeToggleElement.classList.remove('dark_toggle_out')
+            },500)
+           this.updateBGColor("--app-background-r", 255)
+            this.updateBGColor("--app-background-g",255)
+            this.updateBGColor("--app-background-b",255)
+            this.updateBGColor("--app-background-a",1)
+           this.dark = false;
+       }
+
     }
     _allNavLinks(){
         return Array.from(this.shadowRoot.querySelectorAll('.nav-link'));

@@ -33,27 +33,29 @@ class Home extends LitElement {
                         </div>
                     </div>
                 </div>
-                <div style="margin-top:25px;padding:0px 15px;">
-                Tweak colors below for background fun.
+            </div>
+            <div style="display:inline-flex;cursor:pointer;padding-left:3px;" @click="${this.toggleRGBSlider}">
+                <div style="width:13px;height:13px;background-color:red;"></div>
+                <div style="width:13px;height:13px;background-color:green;"></div>
+                <div style="width:13px;height:13px;background-color:blue;"></div>
+            </div>
+            <div class="tc_container hide">
+                <div>
+                    <div style="color:whitesmoke;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:red;border-radius:8px;">${this.background_r}</div>
+                    <input type="range" style="background-color:rgba(255,0,0,.5)" min="0" max="255" .value="${this.background_r}" @input="${this.handleBackground_r}">
                 </div>
-                <div class="tc_container">
-                    <div>
-                        <div style="color:whitesmoke;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:red;border-radius:8px;">${this.background_r}</div>
-                        <input type="range" style="background-color:rgba(255,0,0,.5)" min="0" max="255" .value="${this.background_r}" @input="${this.handleBackground_r}">
-                    </div>
-                    <div>
-                        <div style="color:whitesmoke;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:green;border-radius:8px;">${this.background_g}</div>
-                        <input type="range" style="background-color:rgba(0,255,0,.5)" min="0" max="255" .value="${this.background_g}" @input="${this.handleBackground_g}">
-                    </div>
-                    <div>
-                        <div style="color:whitesmoke;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:blue;border-radius:8px;">${this.background_b}</div>
-                        <input type="range" style="background-color:rgba(0,0,255,.5)" min="0" max="255" .value="${this.background_b}" @input="${this.handleBackground_b}">
-                    </div>
-                    <div>
-                        <div style="color:#333;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:whitesmoke;border-radius:8px;">${this.background_a}</div> 
-                        <input type="range" min="0" max="1" step=".02" .value="${this.background_a}" @input="${this.handleBackground_a}">
-                    </div>  
+                <div>
+                    <div style="color:whitesmoke;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:green;border-radius:8px;">${this.background_g}</div>
+                    <input type="range" style="background-color:rgba(0,255,0,.5)" min="0" max="255" .value="${this.background_g}" @input="${this.handleBackground_g}">
                 </div>
+                <div>
+                    <div style="color:whitesmoke;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:blue;border-radius:8px;">${this.background_b}</div>
+                    <input type="range" style="background-color:rgba(0,0,255,.5)" min="0" max="255" .value="${this.background_b}" @input="${this.handleBackground_b}">
+                </div>
+                <div>
+                    <div style="color:#333;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:whitesmoke;border-radius:8px;">${this.background_a}</div> 
+                    <input type="range" min="0" max="1" step=".02" .value="${this.background_a}" @input="${this.handleBackground_a}">
+                </div>  
             </div>
         `;
     } 
@@ -74,6 +76,14 @@ class Home extends LitElement {
     }
     firstUpdated() {
 
+    }
+    toggleRGBSlider(){
+        const rgbSliderContainer = this.shadowRoot.querySelector('.tc_container');
+        if (rgbSliderContainer.classList.contains('hide')) {
+            rgbSliderContainer.classList.remove('hide');
+        } else {
+            rgbSliderContainer.classList.add('hide');
+        }
     }
     handleBackground_r(e) {
         this.background_r = e.target.value;
@@ -112,7 +122,7 @@ class Home extends LitElement {
                     background-position:left-center; 
                     background-repeat: no-repeat;
                     background-size: cover;
-                    opacity:.06;
+                    opacity:.08;
                 }
                 .bg_svg {
                     z-index:5;
@@ -133,6 +143,7 @@ class Home extends LitElement {
                 }
                 .home_hero {
                     padding:10px;
+                    z-index:100;
                 }
                 .tc_container {
                     display:grid;
@@ -154,6 +165,9 @@ class Home extends LitElement {
                 .tc_container > div > input {
                     background:none;
                     width:100%;
+                }
+                .tc_container.hide {
+                    display:none;
                 }
                 input[type=range] {
                     -webkit-appearance: none;
