@@ -15,13 +15,13 @@ module.exports = {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 loader: 'file-loader',
                 options: {
-                    name: '/assets/images/[name].[ext]',
+                    name: '/static/[name].[ext]',
                 },
             },
         ],
     },
     plugins:[
-        new CleanWebpackPlugin(['dist', 'static']),
+        new CleanWebpackPlugin(['dist']),
         new CopyWebpackPlugin({
             patterns: [
                 {from:'./index.html',to:''}

@@ -6,7 +6,7 @@ class Projects extends LitElement {
            ${this._projectsStyle()}
             <div class="home" style="width:100%;height:100%;">
                 <div style="width:100%;height:100%;">
-                    <div style="width:100%;height:100%;background-image:url('/assets/images/dudehead.svg');background-position:center;background-size:contain;background-repeat: no-repeat;">
+                    <div style="width:100%;height:100%;background-image:url('./static/dudehead.svg');background-position:center;background-size:contain;background-repeat: no-repeat;">
                     </div>
                </div>
             </div>

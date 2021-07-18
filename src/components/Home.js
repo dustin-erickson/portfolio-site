@@ -105,7 +105,7 @@ class Home extends LitElement {
                     right: 0px;
                     bottom: 0px;
                     left: 0px;
-                    background-image:url('/assets/images/oceanscape.svg');
+                    background-image:url('./static/oceanscape.svg');
                     background-position:center; 
                     background-repeat: no-repeat;
                     background-size: cover;
