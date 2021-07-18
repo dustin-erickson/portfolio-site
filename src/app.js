@@ -1,6 +1,9 @@
 import {LitElement, html, unsafeCSS} from "lit-element";
 import {connectRouter} from "lit-redux-router";
 
+import bg1 from '../assets/images/dudehead.svg';
+import bg2 from '../assets/images/oceanscape.svg';
+
 //components
 import './components/NavBar.js';
 import './components/Home.js';
