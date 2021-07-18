@@ -1,5 +1,4 @@
 import {LitElement, html} from 'lit-element';
-const bgSVG1 = new URL('/assets/images/oceanscape.svg', import.meta.url).toString();
 
 class Home extends LitElement {
     static get properties(){
@@ -106,7 +105,7 @@ class Home extends LitElement {
                     right: 0px;
                     bottom: 0px;
                     left: 0px;
-                    background-image:url(${bgSVG1});
+                    background-image:url('/assets/images/oceanscape.svg');
                     background-position:center; 
                     background-repeat: no-repeat;
                     background-size: cover;

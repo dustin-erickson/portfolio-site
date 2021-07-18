@@ -1,5 +1,4 @@
 import {LitElement, html} from 'lit-element';
-const bgSVG1 = new URL('/assets/images/dudehead.svg', import.meta.url).toString();
 
 class Projects extends LitElement {
     render() {
@@ -7,7 +6,7 @@ class Projects extends LitElement {
            ${this._projectsStyle()}
             <div class="home" style="width:100%;height:100%;">
                 <div style="width:100%;height:100%;">
-                    <div style="width:100%;height:100%;background-image:url(${bgSVG1});background-position:center;background-size:contain;background-repeat: no-repeat;">
+                    <div style="width:100%;height:100%;background-image:url('/assets/images/dudehead.svg');background-position:center;background-size:contain;background-repeat: no-repeat;">
                     </div>
                </div>
             </div>
