@@ -31,32 +31,35 @@ class Home extends LitElement {
                             <p>My main is javascript, but I am acquainted with it's other peers PHP, MySQL, Ect.</p>
                             <p>Understanding user interaction and experience is one of my ever evolving quests.</p>
                         </div>
+                        <div class="tc_butn" style="display:inline-flex;position:absolute;bottom:0;left:5px;cursor:pointer;padding-left:3px;" @click="${this.toggleRGBSlider}">
+                            <div style="width:13px;height:13px;background-color:red;"></div>
+                            <div style="width:13px;height:13px;background-color:green;"></div>
+                            <div style="width:13px;height:13px;background-color:blue;"></div>
+                        </div>
+                        <div class="tc_container hide">
+                            <div>
+                                <div style="color:whitesmoke;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:red;border-radius:8px;">${this.background_r}</div>
+                                <input type="range" style="background-color:rgba(255,0,0,.5)" min="0" max="255" .value="${this.background_r}" @input="${this.handleBackground_r}">
+                            </div>
+                            <div>
+                                <div style="color:whitesmoke;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:green;border-radius:8px;">${this.background_g}</div>
+                                <input type="range" style="background-color:rgba(0,255,0,.5)" min="0" max="255" .value="${this.background_g}" @input="${this.handleBackground_g}">
+                            </div>
+                            <div>
+                                <div style="color:whitesmoke;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:blue;border-radius:8px;">${this.background_b}</div>
+                                <input type="range" style="background-color:rgba(0,0,255,.5)" min="0" max="255" .value="${this.background_b}" @input="${this.handleBackground_b}">
+                            </div>
+                            <div>
+                                <div style="color:#333;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:whitesmoke;border-radius:8px;">${this.background_a}</div> 
+                                <input type="range" min="0" max="1" step=".02" .value="${this.background_a}" @input="${this.handleBackground_a}">
+                            </div>  
+                        </div>
                     </div>
+                    
                 </div>
+               
             </div>
-            <div style="display:inline-flex;cursor:pointer;padding-left:3px;" @click="${this.toggleRGBSlider}">
-                <div style="width:13px;height:13px;background-color:red;"></div>
-                <div style="width:13px;height:13px;background-color:green;"></div>
-                <div style="width:13px;height:13px;background-color:blue;"></div>
-            </div>
-            <div class="tc_container hide">
-                <div>
-                    <div style="color:whitesmoke;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:red;border-radius:8px;">${this.background_r}</div>
-                    <input type="range" style="background-color:rgba(255,0,0,.5)" min="0" max="255" .value="${this.background_r}" @input="${this.handleBackground_r}">
-                </div>
-                <div>
-                    <div style="color:whitesmoke;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:green;border-radius:8px;">${this.background_g}</div>
-                    <input type="range" style="background-color:rgba(0,255,0,.5)" min="0" max="255" .value="${this.background_g}" @input="${this.handleBackground_g}">
-                </div>
-                <div>
-                    <div style="color:whitesmoke;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:blue;border-radius:8px;">${this.background_b}</div>
-                    <input type="range" style="background-color:rgba(0,0,255,.5)" min="0" max="255" .value="${this.background_b}" @input="${this.handleBackground_b}">
-                </div>
-                <div>
-                    <div style="color:#333;display:flex;align-items:center;justify-content:center;width:35px;height:35px;background-color:whitesmoke;border-radius:8px;">${this.background_a}</div> 
-                    <input type="range" min="0" max="1" step=".02" .value="${this.background_a}" @input="${this.handleBackground_a}">
-                </div>  
-            </div>
+           
         `;
     } 
     updated(props) {
@@ -125,7 +128,6 @@ class Home extends LitElement {
                     opacity:.08;
                 }
                 .bg_svg {
-                    z-index:5;
                     font-family:tahoma;
                     font-size:13pt;
                     position:relative;
@@ -139,7 +141,7 @@ class Home extends LitElement {
                 .home {
                     display:grid;
                     grid-template-rows:1fr auto;
-                    height:100%;
+                    height:700px;
                 }
                 .home_hero {
                     padding:10px;
@@ -152,6 +154,8 @@ class Home extends LitElement {
                     grid-row:4/-1;
                     align-items:center;
                     padding:5px;
+                    position:absolute;
+                    bottom:0px;
                 }
                 .tc_container > div {
                     display:flex;
@@ -259,11 +263,15 @@ class Home extends LitElement {
     
                 /* Extra small devices (phones, 600px and down) */
                 @media only screen and (max-width: 600px) {
+                    .tc_butn {
+                        display:none!important;
+                    }
                     .tc_container {
                         display:grid;
                         grid-template-columns: 1fr;
                         grid-gap:10px;
                         grid-template-rows: repeat(auto, 1fr);
+                        bottom:-25px;
                     }
                 } 
             </style>

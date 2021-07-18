@@ -3,6 +3,8 @@ import {connectRouter} from "lit-redux-router";
 
 import bg1 from '../static/dudehead.svg';
 import bg2 from '../static/oceanscape.svg';
+import job_manage from '../static/jmsc_1.gif';
+import milage_calc from '../static/mcsc-1.gif';
 
 //components
 import './components/NavBar.js';
@@ -34,10 +36,6 @@ class App extends LitElement {
             --app-background-b:255;
             --app-background-a:1;
         }
-       
-        nav-bar {
-            grid-area:n;
-        }
         #app {
             display:grid;
             height:100%;
@@ -48,6 +46,10 @@ class App extends LitElement {
                 "ct ct ct ct ct ct ct ct ct ct ct ct";
             background-color: rgba(var(--app-background-r),var(--app-background-g), var(--app-background-b), var(--app-background-a));
             color:${this.dark ? `rgba(245,245,245, .7)`:`rgba(0,0,0, .5)`};
+        }
+        nav-bar {
+            grid-area:n;
+            padding:0px 5px;
         }
         .title {
             display:flex;
@@ -64,7 +66,6 @@ class App extends LitElement {
             grid-area:ct;
             border:${this.noborder ? 'none' : this.dark ? `solid 1px rgba(245,245,245, .5)`: `solid 1px rgba(128,128,128, .7)`};
             border-top:none;
-            padding:10px 0px;
         }
         h4 {
             margin:0;
@@ -96,7 +97,6 @@ class App extends LitElement {
         @media screen and (min-width: 899px) {
             #app {
                 width:85%;
-                height:98%;
                 margin:auto;
                 margin-top:3px!important;
                 transition: width .3s, margin .3s, background-color .3s;
@@ -110,7 +110,6 @@ class App extends LitElement {
         @media screen and (min-width: 1500px) {
             #app {
                 width:70%;
-                height:95%;
                 margin:auto;
                 margin-top:5px!important;
                 transition: width .3s, margin .3s, background-color .3s;
@@ -135,7 +134,7 @@ class App extends LitElement {
             .dark_toggle {
                 grid-area:t;
                 display:flex;
-                min-width:50px;
+                min-width:40px;
                 align-items: center;
                 justify-content: center;
                 font-size:11pt!important;
@@ -146,6 +145,7 @@ class App extends LitElement {
             .dark_toggle_out {
                 top:25px;
                 opacity:0;
+                transition:all .2s ease-in-out;
             }
             .title {color:${this.dark ? `rgba(245,245,245, .7)`:`rgba(0,0,0, .5)`}}
             a {
@@ -160,7 +160,7 @@ class App extends LitElement {
                     Dustin Erickson
                 </div>
                 <span class="dark_toggle ${this.dark ? 'dark' : 'light'}" title="Dark Toggle" @click="${this.handleThemeClick}">&#9788;</span>
-                <nav-bar .dark=${this.dark} .noborder=${this.noborder}>
+                <nav-bar .dark=${this.dark} .noborder=${true}>
                     <a active href="/" class="nav-link">Home</a>
                     <a href="/projects" class="nav-link">Projects</a>
                     <a href="/contact" class="nav-link right">Contact</a> 

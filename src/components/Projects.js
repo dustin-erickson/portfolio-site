@@ -16,7 +16,7 @@ class Projects extends LitElement {
         return html`
            ${this._projectsStyle()}
             <div class="home">
-                <div style="width:100%;height:100%;">
+                <div>
                     <div class="bg_svg">
                         <div class="project_title_area">
                             <h1>Experiments</h1>
@@ -28,12 +28,17 @@ class Projects extends LitElement {
                         <div>
                         <h2>Other Projects</h2>
                         <section>
-                            <div style="display:flex;flex-wrap:wrap;justify-content:center;">
-                                <div>
-                                    <img src="https://loremflickr.com/640/360" height="100%"/>
-                                </div>
-                                <div>
+                            <div class="project_grid">
+                                <div style="margin:auto;">
                                     <h3>Job Management</h3>
+                                    <img src="./static/jmsc_1.gif" style="width:97%;"/>
+                                    <div>
+                                        <a href="https://job-manage-test-cxvfqkuoug.now.sh/">Demo</a>
+                                        <a href="https://github.com/dustin-erickson/job-manager">Source</a>
+                                    </div>
+                                </div>
+                                <div style="margin:auto;padding:10px;font-size:.92rem;">
+                                   
                                     <p>
                                         <u>Description:</u>
                                         A widget style web application to provide a simple, easy to use interface to help manage 
@@ -42,7 +47,8 @@ class Projects extends LitElement {
                                     <p>
                                         <u>Purpose:</u>
                                         Build specificly to complement an already existing custom CRM. This widget gives a birds eye
-                                        view an individual salespersons active jobs/customers.
+                                        view an individual salespersons active jobs/customers. Features include alerts for upcomming/past due dates, 
+                                        setting tasks on jobs, overview of job and customer.
                                     </p>
                                     <p>
                                         <u>Learned:</u>
@@ -51,6 +57,35 @@ class Projects extends LitElement {
                                         Being one of my first projects build with Vue JS, I was able to learn a great deal about vue and it's ecosystem.
                                         I would later go on and re-build this same widget using webcomponents to explore that tech.
 
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="project_grid">
+                                <div style="margin:auto;">
+                                    <h3>Milage Calculator</h3>
+                                    <img src="./static/mcsc-1.gif" style="width:97%;"/>
+                                    <div>
+                                        <a href="https://milage-calc.vercel.app/">Demo</a>
+                                        <a href="https://github.com/dustin-erickson/milage-calc">Source</a>
+                                    </div>
+                                </div>
+                                <div style="margin:auto;padding:10px;font-size:.92rem;">
+                                   
+                                    <p>
+                                        <u>Description:</u>
+                                        Web application for calculating the total miles between two point over a period of time.
+                                    </p>
+                                    <p>
+                                        <u>Purpose:</u>
+                                        I wanted to know how many miles I was putting on my car and the amount of time I was spending commuting to work.
+                                        I also wanted to know more about how web map technologies worked.
+                                    </p>
+                                    <p>
+                                        <u>Learned:</u>
+                                        Using webcomponents on this project allowed me to learn a lot of data-binding and event handling within lit-element.
+                                        Using a few map technologies such as leaflet and openmap for the tiles, and mapbox for the directions line plotting.
                                     </p>
                                 </div>
                             </div>
@@ -66,13 +101,29 @@ class Projects extends LitElement {
             :host {
                 color:${this.dark ? `#E8E8E8!important` : '#333'};
             }
+            h3 {
+                margin-bottom:5px;
+                font-weight:normal;
+            }
+            a {
+                font-size:.89rem;
+                margin-right:10px;
+                text-decoration:none;
+                text-underline:none;
+                color:${this.dark ? `silver!important` : '#333'};
+            }
+            section {
+                border-bottom:1.4px solid;
+                padding-bottom:15px;
+                margin-bottom:15px;
+            }
             .project_title_area {
                 padding:0px 25px;
                 z-index:500;
             }
-            .home {
-                width:100%;
-                height:100%;
+            .project_grid {
+                display:grid;
+                grid-template-columns:1fr 1fr;
             }
             h4 {
                 padding:0;
@@ -101,6 +152,11 @@ class Projects extends LitElement {
                 display:flex;
                 align-items:center;
                 flex-direction:column;
+            }
+            @media only screen and (max-width: 842px){
+                .project_grid {
+                    grid-template-columns:1fr;
+                }
             }
         </style>
         `;
