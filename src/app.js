@@ -137,6 +137,7 @@ class App extends LitElement {
             .dark_toggle {
                 grid-area:t;
                 display:flex;
+                min-width:50px;
                 align-items: center;
                 justify-content: center;
                 font-size:11pt!important;

@@ -23,13 +23,13 @@ class Home extends LitElement {
         return html`
            ${this._homeStyle()}
             <div class="home">
-                <div style="position:relative;padding:0px;10px;">
-                    <div class="bg_svg" style="z-index:5;font-family:tahoma;font-size:13pt;position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;">
-                        <div>
+                <div style="position:relative;">
+                    <div class="bg_svg">
+                        <div class="home_hero">
                             <h1>Hello World</h1>
                             <p>I'm a web tinkerer, enjoying the vast universe of web related technologies floating around.</p>
                             <p>My main is javascript, but I am acquainted with it's other peers PHP, MySQL, Ect.</p>
-                            <p>I enjoy understanding user interaction and user expierince the most.</p>
+                            <p>Understanding user interaction and experience is one of my ever evolving quests.</p>
                         </div>
                     </div>
                 </div>
@@ -106,15 +106,30 @@ class Home extends LitElement {
                     bottom: 0px;
                     left: 0px;
                     background-image:url('./static/oceanscape.svg');
-                    background-position:center; 
+                    background-position:left-center; 
                     background-repeat: no-repeat;
                     background-size: cover;
                     opacity:.06;
+                }
+                .bg_svg {
+                    z-index:5;
+                    font-family:tahoma;
+                    font-size:13pt;
+                    position:relative;
+                    width:100%;
+                    height:100%;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    flex-direction:column;
                 }
                 .home {
                     display:grid;
                     grid-template-rows:1fr auto;
                     height:100%;
+                }
+                .home_hero {
+                    padding:10px;
                 }
                 .tc_container {
                     display:grid;
