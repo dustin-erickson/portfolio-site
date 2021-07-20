@@ -46,9 +46,10 @@ class Projects extends LitElement {
                                     </p>
                                     <p>
                                         <u>Purpose:</u>
-                                        Build specificly to complement an already existing custom CRM. This widget gives a birds eye
-                                        view an individual salespersons active jobs/customers. Features include alerts for upcomming/past due dates, 
-                                        setting tasks on jobs, overview of job and customer.
+                                        Build specifically to complement an already existing custom CRM. 
+                                        This widget gives a birds eye view an individual salespersons active jobs/customers. 
+                                        Features include alerts for upcoming/past due dates, setting tasks on jobs, overview of 
+                                        job and customer.
                                     </p>
                                     <p>
                                         <u>Learned:</u>
