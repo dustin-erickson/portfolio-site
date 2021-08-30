@@ -3,6 +3,7 @@ import {connectRouter} from "lit-redux-router";
 
 import bg1 from '../static/dudehead.svg';
 import bg2 from '../static/oceanscape.svg';
+import bg3 from '../static/templelines.svg';
 import job_manage from '../static/jmsc_1.gif';
 import milage_calc from '../static/mcsc-1.gif';
 
