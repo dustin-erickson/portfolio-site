@@ -137,7 +137,7 @@ class Projects extends LitElement {
                 right: 0px;
                 bottom: 0px;
                 left: 0px;
-                background-image:url('./static/Templelines.svg');
+                background-image:url('./static/templelines.svg');
                 background-position:center;
                 background-size:contain;
                 background-repeat: no-repeat;
