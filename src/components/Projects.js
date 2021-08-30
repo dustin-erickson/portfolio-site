@@ -137,11 +137,11 @@ class Projects extends LitElement {
                 right: 0px;
                 bottom: 0px;
                 left: 0px;
-                background-image:url('./static/dudehead.svg');
+                background-image:url('./static/Templelines.svg');
                 background-position:center;
                 background-size:contain;
                 background-repeat: no-repeat;
-                opacity:.08;
+                opacity:.123;
             }
             .bg_svg {
                 z-index:5;
