@@ -17,7 +17,7 @@ class Contact extends LitElement {
         return html`
             ${this._contactStyle()}
             <div class="contact">
-                <div>
+                <div style="display:flex;">
                     <div class="bg_svg">
                         <div class="contact_form_wrapper">
                             <div class="input_container">
@@ -105,9 +105,11 @@ class Contact extends LitElement {
                 left: 0px;
                 background-image:url('./static/dudehead.svg');
                 background-position:center;
-                background-size:contain;
+                background-size:cover;
                 background-repeat: no-repeat;
                 opacity:.08;
+                max-width:700px;
+                margin:auto;
             }
             .bg_svg {
                 z-index:5;
